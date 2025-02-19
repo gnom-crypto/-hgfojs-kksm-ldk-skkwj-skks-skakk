@@ -19,17 +19,28 @@
                 <span class="task-location">Местоположение: Лес</span>
             </div>
             <button class="accept-button" onclick="showConfirmationForm('task-1')">Принять задание</button>
-            <button class="complete-button" onclick="completeTask('task-1')">Задание выполнено</button>
+            <button class="complete-button" onclick="showCompleteForm('task-1')" style="display: none;">Задание выполнено</button>
         </div>
     </div>
 
-    <!-- Форма подтверждения -->
+    <!-- Форма подтверждения принятия задания -->
     <div id="confirmation-form" class="confirmation-form">
         <h2>Подтверждение</h2>
         <p>Вы уверены, что хотите принять это задание?</p>
         <div class="form-buttons">
             <button class="confirm-button" onclick="acceptTask()">Да</button>
             <button class="cancel-button" onclick="hideConfirmationForm()">Нет</button>
+        </div>
+    </div>
+
+    <!-- Форма для завершения задания -->
+    <div id="complete-form" class="complete-form">
+        <h2>Завершение задания</h2>
+        <p>Прикрепите фото для подтверждения выполнения задания:</p>
+        <input type="file" id="task-photo" accept="image/*">
+        <div class="form-buttons">
+            <button class="confirm-button" onclick="submitTask('task-1')">Отправить</button>
+            <button class="cancel-button" onclick="hideCompleteForm()">Отмена</button>
         </div>
     </div>
 
