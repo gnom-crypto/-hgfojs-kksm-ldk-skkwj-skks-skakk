@@ -1,72 +1,76 @@
-// Функция для показа формы подтверждения
+let currentTaskId = null;
+
+// Показать форму подтверждения
 function showConfirmationForm(taskId) {
-    const form = document.getElementById('confirmation-form');
-    form.style.display = 'block';
-    form.dataset.taskId = taskId;
+    currentTaskId = taskId;
+    document.getElementById('confirmation-form').style.display = 'block';
 }
 
-// Функция для скрытия формы подтверждения
+// Скрыть форму подтверждения
 function hideConfirmationForm() {
-    const form = document.getElementById('confirmation-form');
-    form.style.display = 'none';
+    document.getElementById('confirmation-form').style.display = 'none';
 }
 
-// Функция для принятия задания
+// Принять задание
 function acceptTask() {
-    const form = document.getElementById('confirmation-form');
-    const taskId = form.dataset.taskId;
-    const task = document.getElementById(taskId);
-
-    // Помечаем задание как принятое
+    const task = document.getElementById(currentTaskId);
+    
     task.classList.add('accepted');
-    task.querySelector('.accept-button').disabled = true;
-    task.querySelector('.accept-button').textContent = 'Принято';
-
-    // Показываем кнопку "Задание выполнено"
-    const completeButton = task.querySelector('.complete-button');
-    completeButton.style.display = 'block';
-
-    // Блокируем кнопку на 5 минут
-    completeButton.disabled = true;
-    setTimeout(() => {
-        completeButton.disabled = false;
-    }, 5 * 60 * 1000); // 5 минут
-
-    // Скрываем форму
+    task.querySelector('.accept-button').style.display = 'none';
+    task.querySelector('.complete-button').style.display = 'inline-block';
+    
     hideConfirmationForm();
+    showNotification(`🎉 Квест "${task.querySelector('.task-title').textContent}" принят!`);
 }
 
-// Функция для показа формы завершения задания
+// Показать форму завершения
 function showCompleteForm(taskId) {
-    const form = document.getElementById('complete-form');
-    form.style.display = 'block';
-    form.dataset.taskId = taskId;
+    currentTaskId = taskId;
+    document.getElementById('complete-form').style.display = 'block';
 }
 
-// Функция для скрытия формы завершения задания
+// Скрыть форму завершения
 function hideCompleteForm() {
-    const form = document.getElementById('complete-form');
-    form.style.display = 'none';
+    document.getElementById('complete-form').style.display = 'none';
 }
 
-// Функция для отправки задания
-function submitTask(taskId) {
-    const task = document.getElementById(taskId);
-    const photoInput = document.getElementById('task-photo');
-
-    if (photoInput.files.length === 0) {
-        alert('Пожалуйста, прикрепите фото.');
+// Отправить отчет
+function submitTask() {
+    const fileInput = document.getElementById('task-photo');
+    
+    if (!fileInput.files.length) {
+        showNotification('⚠️ Сначала сделайте фото!', 'error');
         return;
     }
 
-    // Помечаем задание как выполненное
+    const task = document.getElementById(currentTaskId);
     task.classList.remove('accepted');
     task.classList.add('completed');
     task.querySelector('.complete-button').style.display = 'none';
+    
+    // Здесь должна быть отправка файла на сервер
+    const file = fileInput.files[0];
+    console.log('Отправляем файл:', file.name);
+    
+    showNotification('📬 Отчет успешно отправлен! Проверяем...');
+    setTimeout(() => {
+        showNotification('✅ Квест завершен! Награда получена!', 'success');
+        task.querySelector('.task-title').innerHTML += ' <span class="completed-badge">✔️</span>';
+    }, 2000);
 
-    // Уведомление (в консоль)
-    console.log(`Задание ${taskId} выполнено. Фото отправлено.`);
-
-    // Скрываем форму
     hideCompleteForm();
+    fileInput.value = '';
+}
+
+// Уведомления
+function showNotification(text, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = text;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
 }
