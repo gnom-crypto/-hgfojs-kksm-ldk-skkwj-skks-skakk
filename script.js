@@ -1,18 +1,8 @@
-// Функция для сохранения состояния задания
-function saveTaskState(taskId, status) {
-    localStorage.setItem(taskId, status);
-}
-
-// Функция для загрузки состояния задания
-function loadTaskState(taskId) {
-    return localStorage.getItem(taskId);
-}
-
-// Функция для отображения формы подтверждения
+// Функция для показа формы подтверждения
 function showConfirmationForm(taskId) {
     const form = document.getElementById('confirmation-form');
     form.style.display = 'block';
-    form.dataset.taskId = taskId; // Сохраняем ID задачи для дальнейшего использования
+    form.dataset.taskId = taskId;
 }
 
 // Функция для скрытия формы подтверждения
@@ -32,45 +22,51 @@ function acceptTask() {
     task.querySelector('.accept-button').disabled = true;
     task.querySelector('.accept-button').textContent = 'Принято';
 
-    // Сохраняем состояние задания
-    saveTaskState(taskId, 'accepted');
+    // Показываем кнопку "Задание выполнено"
+    const completeButton = task.querySelector('.complete-button');
+    completeButton.style.display = 'block';
+
+    // Блокируем кнопку на 5 минут
+    completeButton.disabled = true;
+    setTimeout(() => {
+        completeButton.disabled = false;
+    }, 5 * 60 * 1000); // 5 минут
 
     // Скрываем форму
     hideConfirmationForm();
-
-    // Отправляем данные (заглушка)
-    sendDataToServer(taskId);
 }
 
-// Функция для завершения задания
-function completeTask(taskId) {
+// Функция для показа формы завершения задания
+function showCompleteForm(taskId) {
+    const form = document.getElementById('complete-form');
+    form.style.display = 'block';
+    form.dataset.taskId = taskId;
+}
+
+// Функция для скрытия формы завершения задания
+function hideCompleteForm() {
+    const form = document.getElementById('complete-form');
+    form.style.display = 'none';
+}
+
+// Функция для отправки задания
+function submitTask(taskId) {
     const task = document.getElementById(taskId);
+    const photoInput = document.getElementById('task-photo');
+
+    if (photoInput.files.length === 0) {
+        alert('Пожалуйста, прикрепите фото.');
+        return;
+    }
+
+    // Помечаем задание как выполненное
     task.classList.remove('accepted');
     task.classList.add('completed');
-    task.querySelector('.accept-button').textContent = 'Выполнено';
+    task.querySelector('.complete-button').style.display = 'none';
 
-    // Сохраняем состояние задания
-    saveTaskState(taskId, 'completed');
+    // Уведомление (в консоль)
+    console.log(`Задание ${taskId} выполнено. Фото отправлено.`);
+
+    // Скрываем форму
+    hideCompleteForm();
 }
-
-// Функция для отправки данных на сервер (заглушка)
-function sendDataToServer(taskId) {
-    console.log(`Задание ${taskId} принято. Данные отправлены.`);
-}
-
-// При загрузке страницы восстанавливаем состояние задания
-window.onload = function () {
-    const taskId = 'task-1';
-    const taskState = loadTaskState(taskId);
-
-    if (taskState === 'accepted') {
-        const task = document.getElementById(taskId);
-        task.classList.add('accepted');
-        task.querySelector('.accept-button').disabled = true;
-        task.querySelector('.accept-button').textContent = 'Принято';
-    } else if (taskState === 'completed') {
-        const task = document.getElementById(taskId);
-        task.classList.add('completed');
-        task.querySelector('.accept-button').textContent = 'Выполнено';
-    }
-};
