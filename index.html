@@ -16,8 +16,8 @@
         <div class="task" id="task-1">
             <div class="task-info">
                 <span class="task-title">Поиск пропавшего груза</span>
-                <span class="task-treasure">Клад: Документы и ценные бумаги</span>
-                <span class="task-location">Местоположение: Склад №5, ул. Промышленная, 12</span>
+                <span class="task-treasure">Клад: уточняйте</span>
+                <span class="task-location">Местоположение: лес, уточняйте</span>
             </div>
             <button class="accept-button" onclick="showConfirmationForm('task-1')">Принять задание</button>
             <button class="complete-button" onclick="showCompleteForm('task-1')" style="display: none;">Завершить задание</button>
@@ -26,9 +26,9 @@
         <!-- Задание 2 -->
         <div class="task" id="task-2">
             <div class="task-info">
-                <span class="task-title">Ремонт оборудования</span>
-                <span class="task-treasure">Клад: Запасные части и инструменты</span>
-                <span class="task-location">Местоположение: Цех №3, ул. Заводская, 8</span>
+                <span class="task-title">поиск уточняйте </span>
+                <span class="task-treasure">Клад: уточняйте</span>
+                <span class="task-location">Местоположение: жилой дом, уточняйте</span>
             </div>
             <button class="accept-button" onclick="showConfirmationForm('task-2')">Принять задание</button>
             <button class="complete-button" onclick="showCompleteForm('task-2')" style="display: none;">Завершить задание</button>
@@ -37,9 +37,9 @@
         <!-- Задание 3 -->
         <div class="task" id="task-3">
             <div class="task-info">
-                <span class="task-title">Инвентаризация склада</span>
-                <span class="task-treasure">Клад: Товары и материалы</span>
-                <span class="task-location">Местоположение: Склад №2, ул. Ленина, 45</span>
+                <span class="task-title">прием в 3 точках</span>
+                <span class="task-treasure">Клад: Товары, материалы и уточняйте</span>
+                <span class="task-location">или жилой дом, или лес, или дорога,уточняйте</span>
             </div>
             <button class="accept-button" onclick="showConfirmationForm('task-3')">Принять задание</button>
             <button class="complete-button" onclick="showCompleteForm('task-3')" style="display: none;">Завершить задание</button>
@@ -59,7 +59,7 @@
     <!-- Форма завершения -->
     <div id="complete-form" class="complete-form">
         <h2>Завершение задания</h2>
-        <p>Прикрепите фото для подтверждения выполнения задания:</p>
+        <p>Прикрепите фото для подтверждения выполнения задания, после сделайте скриншот:</p>
         <input type="file" id="task-photo" accept="image/*" required>
         <div class="form-buttons">
             <button class="confirm-button" onclick="submitTask()">Отправить</button>
