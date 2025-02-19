@@ -8,38 +8,61 @@
 </head>
 <body>
     <header>
-        <h1>Задания</h1>
+        <h1>Список заданий</h1>
     </header>
 
     <div class="task-container">
+        <!-- Задание 1 -->
         <div class="task" id="task-1">
             <div class="task-info">
-                <span class="task-title">Название задания: Поиск сокровищ</span>
-                <span class="task-treasure">Клад: Золото</span>
-                <span class="task-location">Местоположение: Лес</span>
+                <span class="task-title">Поиск пропавшего груза</span>
+                <span class="task-treasure">Клад: Документы и ценные бумаги</span>
+                <span class="task-location">Местоположение: Склад №5, ул. Промышленная, 12</span>
             </div>
             <button class="accept-button" onclick="showConfirmationForm('task-1')">Принять задание</button>
-            <button class="complete-button" onclick="showCompleteForm('task-1')" style="display: none;">Задание выполнено</button>
+            <button class="complete-button" onclick="showCompleteForm('task-1')" style="display: none;">Завершить задание</button>
+        </div>
+
+        <!-- Задание 2 -->
+        <div class="task" id="task-2">
+            <div class="task-info">
+                <span class="task-title">Ремонт оборудования</span>
+                <span class="task-treasure">Клад: Запасные части и инструменты</span>
+                <span class="task-location">Местоположение: Цех №3, ул. Заводская, 8</span>
+            </div>
+            <button class="accept-button" onclick="showConfirmationForm('task-2')">Принять задание</button>
+            <button class="complete-button" onclick="showCompleteForm('task-2')" style="display: none;">Завершить задание</button>
+        </div>
+
+        <!-- Задание 3 -->
+        <div class="task" id="task-3">
+            <div class="task-info">
+                <span class="task-title">Инвентаризация склада</span>
+                <span class="task-treasure">Клад: Товары и материалы</span>
+                <span class="task-location">Местоположение: Склад №2, ул. Ленина, 45</span>
+            </div>
+            <button class="accept-button" onclick="showConfirmationForm('task-3')">Принять задание</button>
+            <button class="complete-button" onclick="showCompleteForm('task-3')" style="display: none;">Завершить задание</button>
         </div>
     </div>
 
-    <!-- Форма подтверждения принятия задания -->
+    <!-- Форма подтверждения -->
     <div id="confirmation-form" class="confirmation-form">
         <h2>Подтверждение</h2>
         <p>Вы уверены, что хотите принять это задание?</p>
         <div class="form-buttons">
-            <button class="confirm-button" onclick="acceptTask()">Да</button>
-            <button class="cancel-button" onclick="hideConfirmationForm()">Нет</button>
+            <button class="confirm-button" onclick="acceptTask()">Принять</button>
+            <button class="cancel-button" onclick="hideConfirmationForm()">Отмена</button>
         </div>
     </div>
 
-    <!-- Форма для завершения задания -->
+    <!-- Форма завершения -->
     <div id="complete-form" class="complete-form">
         <h2>Завершение задания</h2>
         <p>Прикрепите фото для подтверждения выполнения задания:</p>
-        <input type="file" id="task-photo" accept="image/*">
+        <input type="file" id="task-photo" accept="image/*" required>
         <div class="form-buttons">
-            <button class="confirm-button" onclick="submitTask('task-1')">Отправить</button>
+            <button class="confirm-button" onclick="submitTask()">Отправить</button>
             <button class="cancel-button" onclick="hideCompleteForm()">Отмена</button>
         </div>
     </div>
