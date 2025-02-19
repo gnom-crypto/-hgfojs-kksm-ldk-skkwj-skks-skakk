@@ -20,7 +20,7 @@ function acceptTask() {
     task.querySelector('.complete-button').style.display = 'inline-block';
     
     hideConfirmationForm();
-    showNotification(`🎉 Квест "${task.querySelector('.task-title').textContent}" принят!`);
+    showNotification(`🎉 Заданий "${task.querySelector('.task-title').textContent}" принято!`);
 }
 
 // Показать форму завершения
@@ -54,8 +54,8 @@ function submitTask() {
     
     showNotification('📬 Отчет успешно отправлен! Проверяем...');
     setTimeout(() => {
-        showNotification('✅ Квест завершен! Награда получена!', 'success');
-        task.querySelector('.task-title').innerHTML += ' <span class="completed-badge">✔️</span>';
+        showNotification('✅ задание завершено! Награда будет выдана, сделайте скриншот!', 'success');
+        task.querySelector('.task-title').innerHTML += ' <span class="completed-badge">✔✅</span>';
     }, 2000);
 
     hideCompleteForm();
