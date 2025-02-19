@@ -19,6 +19,7 @@
                 <span class="task-location">Местоположение: Лес</span>
             </div>
             <button class="accept-button" onclick="showConfirmationForm('task-1')">Принять задание</button>
+            <button class="complete-button" onclick="completeTask('task-1')">Задание выполнено</button>
         </div>
     </div>
 
@@ -27,7 +28,7 @@
         <h2>Подтверждение</h2>
         <p>Вы уверены, что хотите принять это задание?</p>
         <div class="form-buttons">
-            <button class="confirm-button" onclick="acceptTask('task-1')">Да</button>
+            <button class="confirm-button" onclick="acceptTask()">Да</button>
             <button class="cancel-button" onclick="hideConfirmationForm()">Нет</button>
         </div>
     </div>
