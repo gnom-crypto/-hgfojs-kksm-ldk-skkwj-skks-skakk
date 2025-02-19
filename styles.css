@@ -1,8 +1,10 @@
+/* Основные стили */
 body {
     margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+    padding: 20px;
+    background-color: #f9f9f9;
     font-family: Arial, sans-serif;
+    min-height: 100vh;
 }
 
 header {
@@ -10,6 +12,7 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 h1 {
@@ -19,103 +22,117 @@ h1 {
 
 .task-container {
     max-width: 800px;
-    margin: 20px auto;
-    padding: 0 20px;
+    margin: 0 auto;
 }
 
+/* Стили заданий */
 .task {
-    background-color: white;
+    background: white;
     padding: 20px;
-    margin: 10px 0;
-    border-radius: 10px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    align-items: center;
 }
 
 .task-info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex: 1;
 }
 
 .task-title {
     font-size: 18px;
     font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
 }
 
 .task-treasure, .task-location {
-    font-size: 16px;
-    color: #555;
+    font-size: 14px;
+    color: #666;
+    display: block;
+    margin: 5px 0;
 }
 
+/* Кнопки */
 .accept-button, .complete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-left: 15px;
+}
+
+.accept-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.accept-button:hover {
+    background-color: #0056b3;
+}
+
+.complete-button {
     background-color: #28a745;
     color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    display: none;
 }
 
-.accept-button:hover, .complete-button:hover {
+.complete-button:hover {
     background-color: #218838;
 }
 
-.accept-button:disabled, .complete-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
+/* Формы */
 .confirmation-form, .complete-form {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 90%;
+    max-width: 400px;
 }
 
 .confirmation-form h2, .complete-form h2 {
+    font-size: 20px;
     margin-bottom: 15px;
-    font-size: 22px;
 }
 
 .confirmation-form p, .complete-form p {
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: 20px;
 }
 
 .form-buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .confirm-button, .cancel-button {
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     transition: background-color 0.3s ease;
 }
 
 .confirm-button {
-    background-color: #28a745;
+    background-color: #007bff;
     color: white;
 }
 
 .confirm-button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
 .cancel-button {
@@ -127,10 +144,10 @@ h1 {
     background-color: #c82333;
 }
 
-.task.accepted {
-    background-color: #fff3cd; /* Желтый фон для принятого задания */
-}
-
-.task.completed {
-    background-color: #d4edda; /* Зеленый фон для выполненного задания */
+input[type="file"] {
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
 }
