@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт</title>
+    <title>Задания</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Название сайта</h1>
+        <h1>Задания</h1>
     </header>
+
+    <div class="task" id="task-1">
+        <span class="task-title">Название задания</span>
+        <span class="task-treasure">Клад: Золото</span>
+        <span class="task-location">Местоположение: Лес</span>
+        <button class="accept-button" onclick="showConfirmationForm('task-1')">Принять задание</button>
+    </div>
+
+    <!-- Форма подтверждения -->
+    <div id="confirmation-form" class="confirmation-form">
+        <h2>Подтверждение</h2>
+        <p>Вы уверены, что хотите принять это задание?</p>
+        <button onclick="acceptTask('task-1')">Да</button>
+        <button onclick="hideConfirmationForm()">Нет</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
