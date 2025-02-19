@@ -14,42 +14,61 @@ header {
 
 h1 {
     margin: 0;
+    font-size: 24px;
+}
+
+.task-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
 }
 
 .task {
     background-color: white;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 5px;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
-.task.accepted {
-    background-color: #fff3cd; /* Желтый фон для принятого задания */
+.task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.task.completed {
-    background-color: #d4edda; /* Зеленый фон для выполненного задания */
+.task-title {
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.task span {
-    margin-right: 10px;
+.task-treasure, .task-location {
+    font-size: 16px;
+    color: #555;
 }
 
 .accept-button {
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 12px 24px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 .accept-button:hover {
     background-color: #218838;
+}
+
+.accept-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 .confirmation-form {
@@ -59,26 +78,59 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
-.confirmation-form button {
-    margin: 5px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.confirmation-form h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
 }
 
-.confirmation-form button:first-of-type {
+.confirmation-form p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.confirm-button, .cancel-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-button {
     background-color: #28a745;
     color: white;
 }
 
-.confirmation-form button:last-of-type {
+.confirm-button:hover {
+    background-color: #218838;
+}
+
+.cancel-button {
     background-color: #dc3545;
     color: white;
+}
+
+.cancel-button:hover {
+    background-color: #c82333;
+}
+
+.task.accepted {
+    background-color: #fff3cd; /* Желтый фон для принятого задания */
+}
+
+.task.completed {
+    background-color: #d4edda; /* Зеленый фон для выполненного задания */
 }
